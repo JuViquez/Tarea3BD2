@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="tareaCorta3" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=timmycosmowanda.database.windows.net;Initial Catalog=tareaCorta3;Persist Security Info=True;User ID=julito" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="tareaCorta3ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Estudiantes" Member="Estudiantes">
+    <Type Name="Estudiante">
+      <Column Name="cedula" Type="System.Decimal" DbType="Decimal(9,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="carnet" Type="System.Decimal" DbType="Decimal(10,0) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="id_carrera" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="fecha_ingreso" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="foto" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="curriculum_vitae" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Carrera_Estudiante" Member="Carrera" ThisKey="id_carrera" OtherKey="id_carrera" Type="Carrera" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Carrera" Member="Carreras">
+    <Type Name="Carrera">
+      <Column Name="id_carrera" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="encargado" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ubicacion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Carrera_Estudiante" Member="Estudiantes" ThisKey="id_carrera" OtherKey="id_carrera" Type="Estudiante" />
+    </Type>
+  </Table>
+</Database>
