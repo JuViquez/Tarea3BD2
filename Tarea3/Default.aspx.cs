@@ -10,12 +10,25 @@ namespace Tarea3
 {
     public partial class _Default : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e) //cuando carga la pagina
         {
+            using (DataClasses1DataContext dbContext = new DataClasses1DataContext()) //usa el contexto de datos de Linq
+            {
+                spEstudiantesCarreraAno.DataSource = dbContext.estudiantesIngresadosCarreraAno(); //ejecuta sp de estudiantesIngresadosCarreraAño
+                spEstudiantesCarreraAno.DataBind(); //binds to datagrid
 
+                tbTotalEstudiantes.DataSource = dbContext.totalEstudiantes(); // ejecuta sp totalEstudiantes
+                tbTotalEstudiantes.DataBind(); //binds to datagrid
+
+                tbTotalEstudiantesCarrera.DataSource = dbContext.totalEstudiantesCarrera(); //ejecuta sp totalEstudiantesCarrera
+                tbTotalEstudiantesCarrera.DataBind(); //binds to datagrid
+
+                tbTotalEstudiantesAno.DataSource = dbContext.totalEstudiantesPorAno(); //ejecuta sp totalEstudiantes por Ano
+                tbTotalEstudiantesAno.DataBind(); //binds to datagrid
+            }
         }
 
-        private byte[] getFileStream(FileUpload fu)
+        private byte[] getFileStream(FileUpload fu) //Convierte un archivo subido mediante un fileupload component a un arreglo de bytes
         {
             int filelength = fu.PostedFile.ContentLength;
             byte[] file = new byte[filelength];
@@ -25,62 +38,54 @@ namespace Tarea3
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            using (DataClasses1DataContext dbContext = new DataClasses1DataContext())
+            using (DataClasses1DataContext dbContext = new DataClasses1DataContext()) //usa contexto de DB de linq
             {
 
-                Estudiante estudiante = new Estudiante
+                Estudiante estudiante = new Estudiante //crea un nuevo estudiante a con los datos obtenidos de la interfaz grafica
                 {
                     cedula = Convert.ToDecimal(txtCedula.Text),
                     carnet = Convert.ToDecimal(txtCarnet.Text),
                     nombre = txtNombre.Text,
-                    id_carrera = null,
+                    id_carrera = cbCarrera.SelectedValue,
                     fecha_ingreso = calendar.SelectedDate,
                     foto = getFileStream(img),
                     curriculum_vitae = getFileStream(curriculum)
                 };
 
-                dbContext.Estudiantes.InsertOnSubmit(estudiante);
-                dbContext.SubmitChanges();
-                tbEstudiantes.DataBind();
+                dbContext.Estudiantes.InsertOnSubmit(estudiante); //prepara la insercion del estudiante
+                dbContext.SubmitChanges(); //inserta los estudiantes
+                tbEstudiantes.DataBind(); //binds to datagrid
             }
         }
 
-        protected void tbEstudiantes_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnSubmitCarrera_Click(object sender, EventArgs e)
         {
-            using (DataClasses1DataContext dbContext = new DataClasses1DataContext())
+            using (DataClasses1DataContext dbContext = new DataClasses1DataContext()) //usa contexto de la base de datos de linq
             {
 
-                Estudiante estudiante = (from est in dbContext.Estudiantes
-                                         where est.cedula == Convert.ToDecimal(tbEstudiantes.SelectedRow.Cells[0].Text)
-                                         select est).First();
-                txtCedula.Text = estudiante.cedula.ToString();
-                txtCarnet.Text = estudiante.carnet.ToString();
-                txtNombre.Text = estudiante.nombre;
-                cbCarrera.SelectedValue = estudiante.id_carrera;
-                calendar.SelectedDate = estudiante.fecha_ingreso;
-                foto.ImageUrl = GetImage(estudiante.foto.ToArray());
-                
+                Carrera carrera = new Carrera //crea una carrera con los datos de la interfaz
+                {
+                    id_carrera = txtCodigoCarrera.Text,
+                    nombre = txtNombreCarrera.Text,
+                    encargado = txtEncargado.Text,
+                    ubicacion = txtUbicacion.Text
+                };
+
+                dbContext.Carreras.InsertOnSubmit(carrera); //inserta una carrera en la base
+                dbContext.SubmitChanges(); //commit insert
+                tbCarrera.DataBind(); //binds to datagrid
+                cbCarrera.DataBind(); //binds to dropdownlist
             }
         }
-        public string GetImage(object img)
+
+        protected void cbCarrera2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            return "data:image/jpg;base64," + Convert.ToBase64String((byte[])img);
+            using (DataClasses1DataContext dbContext = new DataClasses1DataContext()) //usa contexto de la base de datos de linq
+            {
+                spEstudiantesCarrera.DataSource = dbContext.estudiantesDeCarrera(cbCarrera2.SelectedValue); //ejecuta sp estudiantesCarrera
+                spEstudiantesCarrera.DataBind(); //binds to datagrid
+            }
         }
 
-        public void onImg_upload(object sender, EventArgs e )
-        {
-            byte[] file = getFileStream(img);
-            foto.ImageUrl = GetImage(file);
-        }
-
-        protected void LinqDataSource3_Selecting(object sender, LinqDataSourceSelectEventArgs e)
-        {
-
-        }
-
-        protected void tbCarrera_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

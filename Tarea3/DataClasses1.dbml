@@ -21,4 +21,54 @@
       <Association Name="Carrera_Estudiante" Member="Estudiantes" ThisKey="id_carrera" OtherKey="id_carrera" Type="Estudiante" />
     </Type>
   </Table>
+  <Table Name="" Member="EstudiantesIngresadosCarreraAnos">
+    <Type Name="EstudiantesIngresadosCarreraAno" Id="ID1">
+      <Column Member="id_carrera" Type="System.String" CanBeNull="false" />
+      <Column Member="Nombre" Type="System.String" CanBeNull="false" />
+      <Column Member="Año" Type="System.Int32" CanBeNull="false" />
+      <Column Member="Estudiantes_Ingresados" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="TotalEstudiantes">
+    <Type Name="TotalEstudiantes" Id="ID2">
+      <Column Member="Total_Estudiantes" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="TotalEstudiantesCarreras">
+    <Type Name="TotalEstudiantesCarrera" Id="ID3">
+      <Column Member="id_carrera" Type="System.String" CanBeNull="false" />
+      <Column Member="nombre" Type="System.String" CanBeNull="false" />
+      <Column Member="Total_Estudiantes" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="TotalEstudiantesPorAnos">
+    <Type Name="TotalEstudiantesPorAno" Id="ID4">
+      <Column Member="Año" Type="System.Int32" CanBeNull="false" />
+      <Column Member="Total_Estudiantes" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.estudiantesDeCarrera" Method="estudiantesDeCarrera">
+    <Parameter Name="Id_Carrera" Parameter="id_Carrera" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="estudiantesDeCarreraResult">
+      <Column Name="cedula" Type="System.Decimal" DbType="Decimal(9,0) NOT NULL" CanBeNull="false" />
+      <Column Name="carnet" Type="System.Decimal" DbType="Decimal(10,0) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="id_carrera" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="fecha_ingreso" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="foto" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="curriculum_vitae" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.estudiantesIngresadosCarreraAno" Method="estudiantesIngresadosCarreraAno">
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.totalEstudiantes" Method="totalEstudiantes">
+    <ElementType IdRef="ID2" />
+  </Function>
+  <Function Name="dbo.totalEstudiantesCarrera" Method="totalEstudiantesCarrera">
+    <ElementType IdRef="ID3" />
+  </Function>
+  <Function Name="dbo.totalEstudiantesPorAno" Method="totalEstudiantesPorAno">
+    <ElementType IdRef="ID4" />
+  </Function>
 </Database>

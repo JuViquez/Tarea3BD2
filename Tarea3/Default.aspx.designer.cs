@@ -121,15 +121,6 @@ namespace Tarea3 {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// foto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image foto;
-        
-        /// <summary>
         /// img control.
         /// </summary>
         /// <remarks>
@@ -164,6 +155,42 @@ namespace Tarea3 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// tbEstudiantes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView tbEstudiantes;
+        
+        /// <summary>
+        /// LinqDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinqDataSource LinqDataSource1;
+        
+        /// <summary>
+        /// Label8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label8;
+        
+        /// <summary>
+        /// txtCodigoCarrera control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoCarrera;
         
         /// <summary>
         /// Label5 control.
@@ -211,13 +238,13 @@ namespace Tarea3 {
         protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// TextUbicacion control.
+        /// txtUbicacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextUbicacion;
+        protected global::System.Web.UI.WebControls.TextBox txtUbicacion;
         
         /// <summary>
         /// btnSubmitCarrera control.
@@ -227,24 +254,6 @@ namespace Tarea3 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmitCarrera;
-        
-        /// <summary>
-        /// tbEstudiantes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView tbEstudiantes;
-        
-        /// <summary>
-        /// LinqDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinqDataSource LinqDataSource1;
         
         /// <summary>
         /// tbCarrera control.
@@ -263,5 +272,68 @@ namespace Tarea3 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinqDataSource LinqDataSource3;
+        
+        /// <summary>
+        /// Label9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label9;
+        
+        /// <summary>
+        /// cbCarrera2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbCarrera2;
+        
+        /// <summary>
+        /// spEstudiantesCarrera control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid spEstudiantesCarrera;
+        
+        /// <summary>
+        /// spEstudiantesCarreraAno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView spEstudiantesCarreraAno;
+        
+        /// <summary>
+        /// tbTotalEstudiantes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView tbTotalEstudiantes;
+        
+        /// <summary>
+        /// tbTotalEstudiantesCarrera control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView tbTotalEstudiantesCarrera;
+        
+        /// <summary>
+        /// tbTotalEstudiantesAno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView tbTotalEstudiantesAno;
     }
 }

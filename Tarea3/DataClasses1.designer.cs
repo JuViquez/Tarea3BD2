@@ -83,6 +83,73 @@ namespace Tarea3
 				return this.GetTable<Carrera>();
 			}
 		}
+		
+		public System.Data.Linq.Table<EstudiantesIngresadosCarreraAno> EstudiantesIngresadosCarreraAnos
+		{
+			get
+			{
+				return this.GetTable<EstudiantesIngresadosCarreraAno>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TotalEstudiantes> TotalEstudiantes
+		{
+			get
+			{
+				return this.GetTable<TotalEstudiantes>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TotalEstudiantesCarrera> TotalEstudiantesCarreras
+		{
+			get
+			{
+				return this.GetTable<TotalEstudiantesCarrera>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TotalEstudiantesPorAno> TotalEstudiantesPorAnos
+		{
+			get
+			{
+				return this.GetTable<TotalEstudiantesPorAno>();
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.estudiantesDeCarrera")]
+		public ISingleResult<estudiantesDeCarreraResult> estudiantesDeCarrera([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id_Carrera", DbType="VarChar(10)")] string id_Carrera)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_Carrera);
+			return ((ISingleResult<estudiantesDeCarreraResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.estudiantesIngresadosCarreraAno")]
+		public ISingleResult<EstudiantesIngresadosCarreraAno> estudiantesIngresadosCarreraAno()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<EstudiantesIngresadosCarreraAno>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.totalEstudiantes")]
+		public ISingleResult<TotalEstudiantes> totalEstudiantes()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<TotalEstudiantes>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.totalEstudiantesCarrera")]
+		public ISingleResult<TotalEstudiantesCarrera> totalEstudiantesCarrera()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<TotalEstudiantesCarrera>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.totalEstudiantesPorAno")]
+		public ISingleResult<TotalEstudiantesPorAno> totalEstudiantesPorAno()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<TotalEstudiantesPorAno>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Estudiantes")]
@@ -491,6 +558,356 @@ namespace Tarea3
 		{
 			this.SendPropertyChanging();
 			entity.Carrera = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class EstudiantesIngresadosCarreraAno
+	{
+		
+		private string _id_carrera;
+		
+		private string _Nombre;
+		
+		private int _Año;
+		
+		private int _Estudiantes_Ingresados;
+		
+		public EstudiantesIngresadosCarreraAno()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_carrera", CanBeNull=false)]
+		public string id_carrera
+		{
+			get
+			{
+				return this._id_carrera;
+			}
+			set
+			{
+				if ((this._id_carrera != value))
+				{
+					this._id_carrera = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", CanBeNull=false)]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this._Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Año")]
+		public int Año
+		{
+			get
+			{
+				return this._Año;
+			}
+			set
+			{
+				if ((this._Año != value))
+				{
+					this._Año = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estudiantes_Ingresados")]
+		public int Estudiantes_Ingresados
+		{
+			get
+			{
+				return this._Estudiantes_Ingresados;
+			}
+			set
+			{
+				if ((this._Estudiantes_Ingresados != value))
+				{
+					this._Estudiantes_Ingresados = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class TotalEstudiantes
+	{
+		
+		private int _Total_Estudiantes;
+		
+		public TotalEstudiantes()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Estudiantes")]
+		public int Total_Estudiantes
+		{
+			get
+			{
+				return this._Total_Estudiantes;
+			}
+			set
+			{
+				if ((this._Total_Estudiantes != value))
+				{
+					this._Total_Estudiantes = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class TotalEstudiantesCarrera
+	{
+		
+		private string _id_carrera;
+		
+		private string _nombre;
+		
+		private int _Total_Estudiantes;
+		
+		public TotalEstudiantesCarrera()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_carrera", CanBeNull=false)]
+		public string id_carrera
+		{
+			get
+			{
+				return this._id_carrera;
+			}
+			set
+			{
+				if ((this._id_carrera != value))
+				{
+					this._id_carrera = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Estudiantes")]
+		public int Total_Estudiantes
+		{
+			get
+			{
+				return this._Total_Estudiantes;
+			}
+			set
+			{
+				if ((this._Total_Estudiantes != value))
+				{
+					this._Total_Estudiantes = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class TotalEstudiantesPorAno
+	{
+		
+		private int _Año;
+		
+		private int _Total_Estudiantes;
+		
+		public TotalEstudiantesPorAno()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Año")]
+		public int Año
+		{
+			get
+			{
+				return this._Año;
+			}
+			set
+			{
+				if ((this._Año != value))
+				{
+					this._Año = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Estudiantes")]
+		public int Total_Estudiantes
+		{
+			get
+			{
+				return this._Total_Estudiantes;
+			}
+			set
+			{
+				if ((this._Total_Estudiantes != value))
+				{
+					this._Total_Estudiantes = value;
+				}
+			}
+		}
+	}
+	
+	public partial class estudiantesDeCarreraResult
+	{
+		
+		private decimal _cedula;
+		
+		private decimal _carnet;
+		
+		private string _nombre;
+		
+		private string _id_carrera;
+		
+		private System.DateTime _fecha_ingreso;
+		
+		private System.Data.Linq.Binary _foto;
+		
+		private System.Data.Linq.Binary _curriculum_vitae;
+		
+		public estudiantesDeCarreraResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="Decimal(9,0) NOT NULL")]
+		public decimal cedula
+		{
+			get
+			{
+				return this._cedula;
+			}
+			set
+			{
+				if ((this._cedula != value))
+				{
+					this._cedula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_carnet", DbType="Decimal(10,0) NOT NULL")]
+		public decimal carnet
+		{
+			get
+			{
+				return this._carnet;
+			}
+			set
+			{
+				if ((this._carnet != value))
+				{
+					this._carnet = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_carrera", DbType="VarChar(10)")]
+		public string id_carrera
+		{
+			get
+			{
+				return this._id_carrera;
+			}
+			set
+			{
+				if ((this._id_carrera != value))
+				{
+					this._id_carrera = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_ingreso", DbType="Date NOT NULL")]
+		public System.DateTime fecha_ingreso
+		{
+			get
+			{
+				return this._fecha_ingreso;
+			}
+			set
+			{
+				if ((this._fecha_ingreso != value))
+				{
+					this._fecha_ingreso = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_foto", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false)]
+		public System.Data.Linq.Binary foto
+		{
+			get
+			{
+				return this._foto;
+			}
+			set
+			{
+				if ((this._foto != value))
+				{
+					this._foto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_curriculum_vitae", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false)]
+		public System.Data.Linq.Binary curriculum_vitae
+		{
+			get
+			{
+				return this._curriculum_vitae;
+			}
+			set
+			{
+				if ((this._curriculum_vitae != value))
+				{
+					this._curriculum_vitae = value;
+				}
+			}
 		}
 	}
 }
